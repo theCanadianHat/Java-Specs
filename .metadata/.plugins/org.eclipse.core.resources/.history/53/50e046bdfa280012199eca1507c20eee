@@ -1,0 +1,98 @@
+
+public interface SList {
+	//modeled by: (left: string of object, right: string of object)
+	//initial value: (<>,<>)
+	
+	void clear();
+	/*
+	 * pre: 	true
+	 * post: 	self = (<>,<>)
+	 */
+
+	void addRight(Object x);
+	/*
+	 * pre: 
+	 * 		true
+	 * preserves: 
+	 * 		x, self.left
+	 * post:
+	 * 		self.right = <x> * #self.right
+	 */
+	
+	Object removeRight();
+	/*
+	 * pre: 
+	 * 		|self.right| > 0
+	 * post:
+	 * 		self.right = <removeRight()> * #self.right 
+	 */
+	
+	Object getElementAt(int pos);
+	/*
+	 * pre:
+	 * 		pos	>= 0 < |self.right|
+	 * preserve:
+	 * 		pos AND
+	 * 		self
+	 * post:
+	 * 		there exists L, R : string of object
+	 * 						x : object
+	 * 		s.t.
+	 * 			#self.right = L * <x> * R AND
+	 * 			|L| = pos AND
+	 * 			self.right = L * R
+	 * 			getElementAt() = x
+	 */
+	
+	void advance();
+	/*
+	 * pre:
+	 * 		self.right != <>
+	 * post:
+	 * 		There exist x : object
+	 * 		s.t.
+	 * 			#self.right = <x> * self.right AND
+	 * 			self.right = Prt_Btwn(1,|#self.right|,#self.right) AND
+	 * 			self.left  = #self.left * <x> 
+	 */
+	
+	void moveToStart();
+	/*
+	 * pre:
+	 * 		true
+	 * post:
+	 * 		self.right = #self.left * #self.right
+	 * 		self.left  = <>
+	 */
+	
+	void moveToFinish();
+	/*
+	 * pre:
+	 * 		true
+	 * post:
+	 * 		self.left = #self.left * #self.right
+	 * 		self.right = <>
+	 */
+	
+	int getLeftLength();
+	/*
+	 * pre:
+	 * 		true
+	 * preserves:
+	 * 		self
+	 * post:
+	 * 		getLeftLength() = |self.left|
+	 */
+	
+	int getRightLength();
+	/*
+	 * pre:
+	 * 		true
+	 * preserves:
+	 * 		self
+	 * post:
+	 * 		getRightLength() = |self.right|
+	 */
+	
+	String abstractToString();
+}

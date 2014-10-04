@@ -1,0 +1,59 @@
+import java.util.Vector;
+
+
+public class SListImpl1 implements SList {
+
+	private Vector<Object> m_left; 
+	private Vector<Object> m_right; 
+	
+	public void clear() {
+		m_left = null;
+		m_right = null;
+	}
+
+	public void addRight(Object x) {
+		m_right.add(x);
+	}
+
+	public Object removeRight() {
+		return (m_right.get(0));
+	}
+
+	public Object getElementAt(int pos) {
+		return (m_right.get(pos));
+	}
+
+	public void advance() {
+		Object Temp = m_right.remove(0);
+		m_left.add(m_left.size(), Temp);
+	}
+
+	public void moveToStart() {
+		
+	}
+
+	@Override
+	public void moveToFinish() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public int getLeftLength() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getRightLength() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String abstractToString() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,39 @@
+import junit.framework.TestCase;
+
+
+public class TestSListImpl1
+extends TestCase {
+
+	private SList X0 = new SListImpl1();
+	private SList X1 = new SListImpl1();
+	private SList X2 = new SListImpl1();
+	
+	public void setUp(){
+		X1.addRight(1);
+		
+		X2.addRight(1);
+		X2.addRight(2);
+	}
+	
+	public void testClear(){
+		X0.clear();
+		assertEquals("(<>,<>)",X0.abstractToString());
+		
+		X1.clear();
+		assertEquals("(<>,<>)",X0.abstractToString());
+		
+		X2.clear();
+		assertEquals("(<>,<>)",X0.abstractToString());
+	}
+	
+	public void testAddRight(){
+		X0.addRight(0);
+		assertEquals("(<>,<0>)",X0.abstractToString());
+		
+		X1.addRight(0);
+		X1.addRight(1);
+		X1.addRight(2);
+		X1.addRight(3);
+		assertEquals("(<>,<0,1,2,3>)",X0.abstractToString());
+	}
+}

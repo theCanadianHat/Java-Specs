@@ -1,0 +1,75 @@
+import java.util.Vector;
+
+
+public class SListImpl1 implements SList {
+
+	private Vector<Object> m_left = new Vector<Object>(); 
+	private Vector<Object> m_right = new Vector<Object>(); 
+	
+	public void clear() {
+		m_left.clear();
+		m_right.clear();
+	}
+
+	public void addRight(Object x) {
+		m_right.add(x);
+	}
+
+	public Object removeRight() {
+		return (m_right.get(0));
+	}
+
+	public Object getElementAt(int pos) {
+		return (m_right.get(pos));
+	}
+
+	public void advance() {
+		Object Temp = m_right.remove(0);
+		m_left.add(m_left.size(), Temp);
+	}
+
+	public void moveToStart() {
+		m_right.addAll(0, m_left);
+		m_left.clear();
+	}
+
+	public void moveToFinish() {
+		m_left.addAll(m_left.size(), m_right);
+		m_right.clear();
+
+	}
+
+	public int getLeftLength() {
+		return (m_left.size());
+	}
+
+	public int getRightLength() {
+		return (m_right.size());
+	}
+
+	public String abstractToString() {
+		String result = "(<";
+		if(m_left.size()>0){
+			for(int i=0; i<m_left.size(); i++){
+				if(i == m_left.size()-1){
+					result += m_left.get(i);
+				}else{
+					result += m_left.get(i) + ",";
+				}
+			}
+		}
+		result +=">,<";
+		if(m_right.size()>0){
+			for(int j=0; j<m_right.size(); j++){
+				if(j == m_right.size()-1){
+					result += m_right.get(j);
+				}else{
+					result += m_right.get(j) + ",";
+				}
+			}
+		}
+		result += ">)";
+		return result;
+	}
+
+}
